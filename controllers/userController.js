@@ -29,6 +29,10 @@ class Cliente {
         )
     }
 
+    async removeUser(req) {
+        return User.findByIdAndRemove( { _id: req._id } );
+}
+
     async logMe(email,password) {
         const user =  await User.findOne({email})
         if(!user){
