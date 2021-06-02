@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const Room = require("../models/room");
+const { findById } = require("../models/user");
 
 
 class Sala {
@@ -57,6 +58,11 @@ class Sala {
 
         return Room.findByIdAndUpdate( { _id: id }, { $push: { mensajes: mensaje } })
     }
+
+    async showChatById(body) {
+        return Room.findOne( { miembros: body._id, })
+    }
+    // , { $eq: { mensajes: body._id } }
 }
 
 let chatController = new Sala();
