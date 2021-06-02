@@ -57,6 +57,17 @@ router.post("/addmessage", async(req, res) => {
     }
 });
 
+router.get("/msj", async(req, res) => {
+    try {
+        const body = req.body;
+        res.json(await chatController.showChatById(body))
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message
+        });
+    }
+});
+
 router.post("/deletechat", async(req, res) => {
     try {
         const id = req.body;
