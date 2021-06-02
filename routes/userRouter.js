@@ -51,4 +51,15 @@ router.post("/login", async(req, res) => {
     }
 });
 
+router.delete("/", async(req, res) => {
+    try {
+        const body = req.body;
+        res.json(await userController.removeUser(body));
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message
+        });
+    }
+})
+
 module.exports = router;
