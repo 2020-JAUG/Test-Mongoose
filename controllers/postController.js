@@ -15,12 +15,21 @@ class Msj {
     }
     // return Post.findOne( { posts: body.id  }, );
 
-    async findPostById(body) {
+    async findPostByEmail(body) {
         return Post.where(
-            { name: body.name },
-            { posts: body.posts,}
+            { email: body.email },
+            // { posts: body.posts, }
         )
     }
+
+    async deletePost(req) {
+        return Post.findByIdAndRemove( { _id: req._id } );
+    }
+
+// return Post.findByIdAndRemove(
+//     { _id: id }//aquipasas la id de la sala
+//    ,{ $pull: { post: body.post } }
+// )
 
 
 }
