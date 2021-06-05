@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { array } = require("prop-types");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -14,7 +15,8 @@ const userSchema = new Schema({
     email: {
         type: "String",
         required: true,
-        lowercase: true
+        lowercase: true,
+        unique: true
     },
     password: {
         type: "String",
@@ -37,6 +39,9 @@ const userSchema = new Schema({
     isActive: {
         type: Boolean,
         default: true
+    },
+    posts: {
+        type: Array
     }
 });
 
