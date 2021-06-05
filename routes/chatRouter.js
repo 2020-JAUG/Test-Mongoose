@@ -35,7 +35,7 @@ router.post("/join", async(req, res) => {
     }
 });
 
-router.post("/leave", async(req, res) => {
+router.delete("/leave", async(req, res) => {
     try {
         const data = req.body;
         res.json(await chatController.leaveRoom(data));

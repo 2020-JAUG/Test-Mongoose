@@ -13,10 +13,10 @@ router.post("/", async(req, res) => {
     }
 });
 
-router.put("/", async(req, res) => {
+router.delete("/deletepost", async(req, res) => {
     try {
-        const data = req.body;
-        res.json(await postController.modifyPost(data))
+        const id = req.body;
+        res.json(await postController.deletePost(id))
     } catch (error) {
         return res.status(500).json({
             message: error.message
@@ -34,10 +34,10 @@ router.get("/", async(req, res) => {
     }
 });
 
-router.get("/byid", async(req, res) => {
+router.get("/email", async(req, res) => {
     try {
         const body = req.body;
-        res.json(await postController.findPostById(body));
+        res.json(await postController.findPostByEmail(body));
     } catch (error) {
         return res.status(500).json({
             message: error.message
