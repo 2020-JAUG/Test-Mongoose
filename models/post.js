@@ -10,6 +10,12 @@ const postSchema = new Schema({
         type: Date,
         required: true
     },
+    email: {
+        type: "String",
+        required: true,
+        lowercase: true,
+        unique: true
+    },
     post: {
         type: Array
     },
